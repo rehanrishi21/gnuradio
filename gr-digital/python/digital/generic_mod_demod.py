@@ -363,6 +363,9 @@ class generic_demod(gr.hier_block2):
                      blocks.file_sink(gr.sizeof_float, "rx_receiver_phase.32f"))
         self.connect((self.receiver, 3),
                      blocks.file_sink(gr.sizeof_float, "rx_receiver_freq.32f"))
+        self.connect((self.receiver, 4),
+                     blocks.file_sink(gr.sizeof_gr_complex, "rx_receiver_data.32fc"))
+                      	
         if self._differential:
             self.connect(self.diffdec,
                          blocks.file_sink(gr.sizeof_char, "rx_diffdec.8b"))
